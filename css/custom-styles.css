@@ -1,5 +1,6 @@
 /*essential background image styling*/
 body{
+	background-color: #bdc2c5;
 	background-image: url("../img/ws3-wm-1920-1080-80.jpg");
 	background-repeat:no-repeat;
 	background-attachment:fixed;
