@@ -1,0 +1,25 @@
+/*essential background image styling*/
+body{
+	background-image: url("img/ws0-wm-1920-1080-80.jpg");
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:left;		/*fixes image to right, left or center */
+	background-size:cover;
+}
+
+p{
+	font-family: 'Pacifico', cursive;
+	font-family: 'Kavoon', cursive;
+}
+
+
+/* How to make a textbox with a certain level of opacity */
+/*
+div{
+background-color: rgba(5,4,2,0.1);
+width:850px;
+height: 100%;
+margin-left:auto;
+margin-right:auto;
+padding: 15px; }
+*/
