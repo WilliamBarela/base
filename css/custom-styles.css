@@ -3,7 +3,7 @@ body{
 	background-image: url("../img/ws3-wm-1920-1080-80.jpg");
 	background-repeat:no-repeat;
 	background-attachment:fixed;
-	background-position:left bottom;		/*fixes image to right, left or center */
+	background-position:left center;		/*fixes image to right, left or center */
 	background-size:cover;
 }
 
@@ -12,6 +12,9 @@ p{
 	font-family: 'Kavoon', cursive;
 }
 
+.navbar-inverse{
+	  background-color: #293845;
+}
 
 /* How to make a textbox with a certain level of opacity */
 /*

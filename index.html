@@ -8,9 +8,9 @@
 
     <!-- Importing Bootstrap if it is saved in files-->
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+<!--
     <link href="css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
-    <!-- Custom CSS file import-->
-    <link rel="stylesheet" href="css/custom-styles.css">
+-->
     <!-- Importing Bootstrap if you want to link directly to Bootstrap CDN (prefered)-->
     <!--
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -19,7 +19,9 @@
     <!-- Importing Font Awesome and Bootstrap Social CSS classes -->
     <link href="css/font-awesome/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap/bootstrap-social.css" rel="stylesheet">
-
+    <!-- Custom CSS file import-->
+    <link href="css/lavish-bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom-styles.css">
     <!-- Importing Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kavoon" rel="stylesheet">
@@ -30,10 +32,62 @@
     <title>Innovation Starts Here: William Barela</title>
   </head>
   <body>
-    <h1></h1>
-    <div>
-      This is an example of a great textbox
-    </div>
+    <!-- Navigation Bar-->
+      <nav class='navbar navbar-inverse navbar-fixed-top' role='navigation'>
+        <div class='container'>
+          <div class='navbar-header'>
+            <button type="button" class='navbar-toggle collapsed' data-toggle='collapse' data-target='#navbar' aria-expanded='false' aria-controls='navbar'>
+              <span class='sr-only'>Toggle navigation</span>
+              <span class='icon-bar'></span>
+              <span class='icon-bar'></span>
+              <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' href='index.html'><img src='img/tardigrade.png' height=25 width=25 /></a>
+          </div>
+
+          <!--Navbar list-->
+          <div id=navbar class="navbar-collapse collapse">
+            <ul class='nav navbar-nav'>
+              <!--Home Button-->
+              <li class='active'>
+                <a href='index.html'>
+                  <span class='glyphicon glyphicon-home' aria-hidden='true'></span> Home
+                </a>
+              </li>
+              <!--About Us button-->
+              <li>
+                <a href='aboutus.html'>
+                  <span class='glyphicon glyphicon-info-sign' aria-hidden='true'></span> About
+                </a>
+              </li>
+              <!--Menu button with dropdown menu-->
+              <li class='dropdown'>
+                <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
+                  Menu <span class='caret'></span>
+                </a>
+                <!--Dropdown Menu Contents-->
+                <ul class='dropdown-menu'>
+                  <li class='dropdown-header'>Main Event</li>
+                  <li><a href="#">Appetizers</a></li>
+                  <li><a href="#">Main Courses</a></li>
+                  <li><a href="#">Desserts</a></li>
+                  <li><a href="#">Drinks</a></li>
+                  <li role='separator' class='divider'></li>
+                  <li class='dropdown-header'>Specials</li>
+                  <li><a href="#">Lunch Buffet</a></li>
+                  <li><a href="#">Weekend Brunch</a></li>
+                </ul>
+              </li>
+              <!--Contact Button-->
+              <li>
+                <a href='contactus.html'>
+                  <span><i class='fa fa-envelope'> </i></span> Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
     <!-- Inclusion of jQuery library if saved in webpage folder-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
