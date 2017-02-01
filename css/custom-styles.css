@@ -13,15 +13,22 @@ body{
 
 body {
 	background-color: #bdc2c5;
-	background-image: url("../img/ws3-wm-1920-1080-80-small.jpg");
+	background-image: url("../img/ws3-wm-750-1334-80.jpg");
 	/* background-image: url("../img/ws1-wm-1920-1080-80.jpg"); */
 	min-height: 100%;
 	background-repeat:no-repeat;
 	background-attachment:fixed;
-	background-position:top center;
+	background-position:bottom center;
 	background-size:cover;
 	-moz-background-size: cover;
 	font-family: 'Cabin', sans-serif;
+}
+
+@media (min-width: 751px) {
+  body {
+		background-image: url("../img/ws3-wm-917-1334-80.jpg");
+		background-position:left bottom;
+  }
 }
 
 @media (min-width: 992px) {
@@ -31,9 +38,9 @@ body {
   }
 }
 
-h1{
+.name-banner{
 	font-family: 'Special Elite', cursive;
-	font-size: 5em;
+	font-size: 4em;
 }
 
 .well{
