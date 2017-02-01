@@ -1,12 +1,34 @@
 /*essential background image styling*/
+/*
 body{
 	background-color: #bdc2c5;
 	background-image: url("../img/ws3-wm-1920-1080-80.jpg");
 	background-repeat:no-repeat;
 	background-attachment:fixed;
-	background-position:left center;		/*fixes image to right, left or center */
+	background-position:left center;
 	background-size:cover;
 	font-family: 'Cabin', sans-serif;
+}
+*/
+
+body {
+	background-color: #bdc2c5;
+	background-image: url("../img/ws3-wm-1920-1080-80-small.jpg");
+	/* background-image: url("../img/ws1-wm-1920-1080-80.jpg"); */
+	min-height: 100%;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:top center;
+	background-size:cover;
+	-moz-background-size: cover;
+	font-family: 'Cabin', sans-serif;
+}
+
+@media (min-width: 992px) {
+  body {
+		background-image: url("../img/ws3-wm-1920-1080-80.jpg");
+		background-position:left bottom;
+  }
 }
 
 h1{
