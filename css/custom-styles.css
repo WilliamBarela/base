@@ -18,7 +18,7 @@ body {
 	min-height: 100%;
 	background-repeat:no-repeat;
 	background-attachment:fixed;
-	background-position:bottom center;
+	background-position:top center;
 	background-size:cover;
 	-moz-background-size: cover;
 	font-family: 'Cabin', sans-serif;
@@ -28,6 +28,7 @@ body {
   body {
 		background-image: url("../img/ws3-wm-917-1334-80.jpg");
 		background-position:left bottom;
+		background-attachment:fixed;
   }
 }
 
