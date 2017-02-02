@@ -1,16 +1,3 @@
-/*essential background image styling*/
-/*
-body{
-	background-color: #bdc2c5;
-	background-image: url("../img/ws3-wm-1920-1080-80.jpg");
-	background-repeat:no-repeat;
-	background-attachment:fixed;
-	background-position:left center;
-	background-size:cover;
-	font-family: 'Cabin', sans-serif;
-}
-*/
-
 body{
 	background-color: #bdc2c5;
 	font-family: 'Cabin', sans-serif;
@@ -53,43 +40,3 @@ body {
 	border: 1px solid rgba(212, 216, 209, 0.5);
 	color: black;
 }
-
-
-/*
-font-family: 'Ek Mukta', sans-serif;
-font-family: 'Open Sans', sans-serif;
-font-family: 'Cabin', sans-serif;
-*/
-
-/*
-p{
-	font-family: 'Rock Salt', cursive;
-	font-family: 'Amatic SC', cursive;
-	font-family: 'Pacifico', cursive;
-	font-family: 'Kavoon', cursive;
-	font-family: 'Delius Unicase', cursive;
-	font-family: 'Special Elite', cursive;
-}
-Source Sans Pro: menus
-Rock Salt: Headers
-Give You Glory: Headers
-Shadows Into Light Two: Headers
-Special Elite: Headers
-Cabin: text
-*/
-
-
-.navbar-inverse{
-	  background-color: #293845;
-}
-
-/* How to make a textbox with a certain level of opacity */
-/*
-div{
-background-color: rgba(5,4,2,0.1);
-width:850px;
-height: 100%;
-margin-left:auto;
-margin-right:auto;
-padding: 15px; }
-*/
