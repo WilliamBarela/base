@@ -16,6 +16,44 @@ body{
 	font-family: 'Cabin', sans-serif;
 }
 
+body {
+	background-color: #bdc2c5;
+	background-image: url("../img/ws3-wm-750-1334-80.jpg");
+	/* background-image: url("../img/ws1-wm-1920-1080-80.jpg"); */
+	min-height: 100%;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:top center;
+	background-size:cover;
+	-moz-background-size: cover;
+}
+
+@media (min-width: 751px) {
+  body {
+		background-image: url("../img/ws3-wm-917-1334-80.jpg");
+		background-position:left bottom;
+		background-attachment:fixed;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+		background-image: url("../img/ws3-wm-1920-1080-80.jpg");
+		background-position:left bottom;
+  }
+}
+
+.name-banner{
+	font-family: 'Special Elite', cursive;
+	font-size: 4em;
+}
+
+.well{
+  background:rgba(212, 216, 209, 0.5);
+	border: 1px solid rgba(212, 216, 209, 0.5);
+	color: black;
+}
+
 
 /*
 font-family: 'Ek Mukta', sans-serif;
