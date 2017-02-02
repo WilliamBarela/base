@@ -12,10 +12,17 @@ body{
 */
 
 body{
-	background-color: #bdc2c5;
 	font-family: 'Cabin', sans-serif;
 }
 
+.dropdown-menu li a:hover{
+	background-color:#3a4e62;
+	color:white;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
 /*
 font-family: 'Ek Mukta', sans-serif;
@@ -39,11 +46,6 @@ Shadows Into Light Two: Headers
 Special Elite: Headers
 Cabin: text
 */
-
-
-.navbar-inverse{
-	  background-color: #293845;
-}
 
 /* How to make a textbox with a certain level of opacity */
 /*
