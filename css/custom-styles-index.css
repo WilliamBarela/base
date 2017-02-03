@@ -32,11 +32,19 @@ body {
 
 .name-banner{
 	font-family: 'Special Elite', cursive;
-	font-size: 4em;
+	font-size: 4.5em;
+	text-align: center;
 }
 
 .well{
-  background:rgba(212, 216, 209, 0.5);
+	text-align: center;
+	background:rgba(212, 216, 209, 0.5);
 	border: 1px solid rgba(212, 216, 209, 0.5);
-	color: black;
+	transition: color 1s ease-in-out;
+	transition: background 0.5s ease-in-out;
+}
+
+.well:hover{
+	color: rgba(0, 0, 0, 0.8);
+	background:rgba(212, 216, 209, 0.9);
 }

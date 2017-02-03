@@ -3,15 +3,16 @@
 
   angular.module('lister', []).controller('menuServer', menuServer);
 
-  menuServer.$inject = ['$scope', '$http'];
-  function menuServer($scope, $http){
-    $http.get('../data/physics.json').then(function(response){
-      $scope.myData = response.data;
-    })
+  menuServer.$inject = ['$scope'];
+  function menuServer($scope){
+    $scope.myData = JSON.parse(data);
     $scope.makeList = function(){
-      console.log($scope.myData);
+      console.log($scope.myData[0].red);
     }
   }
+
+  var data = '[{"choice": "blue or red", "blue": "forget it all", "red": "open your mind to the matrix"}]';
+
 
 
 })();

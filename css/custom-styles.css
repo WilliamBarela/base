@@ -15,14 +15,19 @@ body{
 	font-family: 'Cabin', sans-serif;
 }
 
-.dropdown-menu li a:hover{
-	background-color:#3a4e62;
-	color:white;
+/*Ensures that the dropdown-menu appears only when navbar is expanded*/
+@media (min-width: 768px) {
+	.dropdown-menu li a:hover{
+		background-color:#3a4e62;
+		color:white;
+	}
+
+	.dropdown:hover .dropdown-menu {
+	  display: block;
+	}
 }
 
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
+
 
 /*
 font-family: 'Ek Mukta', sans-serif;
