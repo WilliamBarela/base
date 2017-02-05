@@ -27,6 +27,18 @@ body{
 	}
 }
 
+.banner{
+	align: center;
+	padding-top:75px;
+	font-family: 'Special Elite', cursive;
+	font-size: 4.5em;
+	text-align: center;
+}
+
+.padding-none{
+	padding:0;
+}
+
 
 
 /*

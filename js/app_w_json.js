@@ -27,6 +27,8 @@
 })();
 
 // Convert a Javascript object to JSON in angular:
+// data must be from a JSON file not a "JSON-like" object.
+// For a "JSON-like" object use JSON.parse() function
 
 /*
   console.log(angular.toJson($scope.myData))
