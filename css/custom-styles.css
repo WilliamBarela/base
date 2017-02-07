@@ -1,3 +1,9 @@
+/*way of including a screenshot in github in .md file*/
+/*
+# Descriptor of image
+![Screenshot](img/screenshot.jpg?raw=true)
+*/
+
 /*essential background image styling*/
 /*
 body{
@@ -14,6 +20,7 @@ body{
 body{
 	font-family: 'Cabin', sans-serif;
 }
+
 
 /*Ensures that the dropdown-menu appears only when navbar is expanded*/
 @media (min-width: 768px) {
@@ -35,7 +42,7 @@ body{
 	text-align: center;
 }
 
-.mycontainer {
+.img-container {
   position: relative;
   width: 100%;
 }
@@ -51,20 +58,20 @@ body{
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.5) /*#008CBA*/;
+  background-color: rgba(255, 255, 255, 0.5);
   overflow: hidden;
   width: 0;
   height: 30%;
   transition: 1s ease;
 }
 
-.mycontainer:hover .overlay {
+.img-container:hover .overlay {
   width: 100%;
 }
 
 .text {
   white-space: nowrap;
-  color: rgba(0, 0, 0, 0.9) /*white*/;
+  color: rgba(0, 0, 0, 0.9);
   font-size: 20px;
   position: absolute;
   overflow: hidden;
@@ -74,6 +81,27 @@ body{
   -ms-transform: translate(-50%, -50%);
 }
 
+#my-footer{
+	padding-top: 20px;
+	background-color: black;
+	color: white;
+}
+
+/*overlays an image at the top of the page*/
+#top-overlay {
+  width:100%;
+  position:fixed;
+  top:0px;
+  left:0;
+  background:url('../img/bg-bunting.png') repeat-x center top;
+  text-align:center;
+  height:100px;
+}
+
+nav.navbar{
+	background-color: black;
+	color: white;
+}
 
 /*
 font-family: 'Ek Mukta', sans-serif;
