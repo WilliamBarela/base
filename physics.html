@@ -67,7 +67,7 @@
                 <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
                   <span class='glyphicon glyphicon-list'></span> Resources <span class='caret'></span>
                 </a>
-                
+
                 <!--Dropdown Menu Contents-->
                 <!--FIXME Expand the resources dropdown with this list-->
                 <!--
@@ -113,6 +113,22 @@
         </div>
       </nav>
 
+      <p style='padding:60px'></p>
+
+      <!-- ng-repeat="unit in units"-->
+      <div class="container" ng-controller='formController'>
+        <div class="row row-content">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-4">
+            <form>
+              <div class="form-group" ng-repeat="unit in units">
+                <input type="text" class="form-control" placeholder={{unit.name}}>
+                <button type="button" ng-click='makeList()'>Menu Serving</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <div class="container" ng-controller='menuServer'>
         <div class="row row-content">
           <div class="col-xs-10 col-xs-push-1 col-md-6 col-md-push-6">
@@ -125,7 +141,39 @@
             -->
           </div>
         </div>
+        <p style='padding:20px'></p>
       </div>
+
+      <footer class="row-footer" id='my-footer'>
+          <div class='container'>
+              <div class='row'>
+                  <div class='col-xs-6 col-xs-offset-1 col-sm-2 col-sm-offset-1'>
+                      <h5>Links</h5>
+                      <ul class='list-unstyled'>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="aboutus.html">About</a></li>
+                          <li><a href="#">Menu</a></li>
+                          <li><a href="#">Contact</a></li>
+                      </ul>
+                  </div>
+
+                  <div class='col-xs-12 col-xs-offset-1 col-sm-5 col-sm-push-3'>
+                      <div class='nav navbar-nav' style="padding: 40px 10px;">
+                          <a class='btn btn-social-icon btn-google-plus' href="http://google.com/+"><i class='fa fa-google-plus'></i></a>
+                          <a class='btn btn-social-icon btn-facebook' href="http://www.facebook.com/profile.php?id="><i class='fa fa-facebook'></i></a>
+                          <a class='btn btn-social-icon btn-linkedin' href="http://www.linkedin.com/in/"><i class='fa fa-linkedin'></i></a>
+                          <a class='btn btn-social-icon btn-twitter' href="http://twitter.com/"><i class='fa fa-twitter'></i></a>
+                          <a class='btn btn-social-icon btn-youtube' href="http://youtube.com/"><i class='fa fa-youtube'></i></a>
+                          <a class='btn btn-social-icon btn-twitter' href="mailto:"><i class='fa fa-envelope'></i></a>
+                      </div>
+                  </div>
+                  <div class='col-xs-12'>
+                      <p style="padding:10px;"></p>
+                      <p align=center>Handcrafted with <span style='color:red;'>love</span> on our beloved blue marble. 2017</p>
+                  </div>
+              </div>
+          </div>
+      </footer>
 
     <!-- Inclusion of jQuery library if saved in webpage folder-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
