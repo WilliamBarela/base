@@ -6,25 +6,28 @@
   app.controller('menuServer', menuServer);
   app.controller('dropdownController', dropdownController);
 
+  //Menu Server Function
   menuServer.$inject = ['$scope'];
   function menuServer($scope){
-    $scope.myData = JSON.parse(physics);
+    $scope.myData = JSON.parse(physics_units);
     $scope.makeList = function(){
       console.log($scope.myData[0].object.name);
     }
   }
 
+  //Dropdown Controller
   dropdownController.$inject = ['$scope'];
   function dropdownController($scope){
+    $scope.listItems =  physics;
     $scope.message = "Please select one";
     $scope.itemIndex;
-    $scope.listItems = JSON.parse(physics);
+    $scope.dropdownOptions;
     $scope.units = JSON.parse(physics_units);   //remove from final code here and in html
 
     $scope.setMessage = function(itemSelected, index){
       $scope.message = itemSelected;
       $scope.itemIndex = index;
-      console.log(JSON.stringify($scope.units));
+      $scope.dropdownOptions = $scope.listItems[$scope.itemIndex].variable;
     }
 
     $scope.makeList = function(){     //remove from final code here and in final html
@@ -32,6 +35,12 @@
     }
   }
 
+  var physics1 = '[ \
+                  {"property": "energy", "object": {"name": "bowling ball", "mass": 7.26, "acceleration":9.8, "init-distance":100}, "units": {"mass": "kg", "distance": "m"}, "colors":{"red": "open your mind to the matrix"}}, \
+                  {"property": "mass", "object": {"name": "bowling ball", "mass": 7.26, "acceleration":9.8, "init-distance":100}, "units": {"mass": "kg", "distance": "m"}, "colors":{"red": "open your mind to the matrix"}}, \
+                  {"property": "force", "object": {"name": "bowling ball", "mass": 7.26, "acceleration":9.8, "init-distance":100}, "units": {"mass": "kg", "distance": "m"}, "colors":{"red": "open your mind to the matrix"}}, \
+                  {"property": "acceleration", "object": {"name": "bowling ball", "mass": 7.26, "acceleration":9.8, "init-distance":100}, "units": {"mass": "kg", "distance": "m"}, "colors":{"red": "open your mind to the matrix"}} \
+                ]';
 
   var physics = [
       {
@@ -72,7 +81,15 @@
                       amount of joules of energy which acts on one unit of area (meter squared) \
                       per unit of time (second)."
       }
+
                     ];
+
+
+      var physics_units = '[ \
+                            {"name": "kg"}, \
+                            {"name": "m"}, \
+                            {"name": "m/s^2"} \
+                          ]';
 
       /*$scope.properties = ["Energy", "Newton's First Law", "Newton's Second Law"];  //remove from final code here and in html */
 

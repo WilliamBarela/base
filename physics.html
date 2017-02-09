@@ -126,13 +126,12 @@
                   {{message}} <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li ng-repeat="item in listItems" ng-click="setMessage(item.property, $index)"><a>{{item.property}}</a></li>
+                  <li ng-repeat="item in listItems" ng-click="setMessage(item.property.name, $index)"><a>{{item.property.name}}</a></li>
                 </ul>
               </div>
               <!-- defining form textboxes-->
-              <div class="form-group" ng-repeat="unit in units">
-                <input type="text" class="form-control" placeholder={{unit.name}}>
-                <button type="button" ng-click='makeList()'>Menu Serving</button>
+              <div class="form-group" ng-repeat="option in dropdownOptions">
+                <input type="text" class="form-control" placeholder={{option.unit}}>
               </div>
             </form>
           </div>
