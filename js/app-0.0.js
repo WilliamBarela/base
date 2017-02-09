@@ -16,17 +16,13 @@
 
   dropdownController.$inject = ['$scope'];
   function dropdownController($scope){
-    $scope.message = "Please select one";
-    $scope.itemIndex;
+    $scope.message = "Please select one"
     $scope.properties = ["Energy", "Newton's First Law", "Newton's Second Law"];  //remove from final code here and in html
     $scope.listItems = JSON.parse(physics);
     $scope.units = JSON.parse(physics_units);   //remove from final code here and in html
-
-    $scope.setMessage = function(itemSelected, index){
+    $scope.setMessage = function(itemSelected){
       $scope.message = itemSelected;
-      $scope.itemIndex = index;
     }
-
     $scope.makeList = function(){     //remove from final code here and in final html
       console.log($scope.units);
     }

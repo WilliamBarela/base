@@ -126,7 +126,7 @@
                   {{message}} <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li ng-repeat="item in listItems" ng-click="setMessage(item.property)"><a>{{item.property}}</a></li>
+                  <li ng-repeat="item in listItems" ng-click="setMessage(item.property, $index)"><a>{{item.property}}</a></li>
                 </ul>
               </div>
               <!-- defining form textboxes-->
