@@ -116,10 +116,20 @@
       <p style='padding:60px'></p>
 
       <!-- ng-repeat="unit in units"-->
-      <div class="container" ng-controller='formController'>
+      <div class="container" ng-controller='dropdownController'>
         <div class="row row-content">
           <div class="col-xs-12 col-sm-6 col-sm-offset-4">
             <form>
+              <!-- defining dropdown menu-->
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                  {{message}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="item in listItems" ng-click="setMessage(item.property)"><a>{{item.property}}</a></li>
+                </ul>
+              </div>
+              <!-- defining form textboxes-->
               <div class="form-group" ng-repeat="unit in units">
                 <input type="text" class="form-control" placeholder={{unit.name}}>
                 <button type="button" ng-click='makeList()'>Menu Serving</button>

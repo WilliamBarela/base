@@ -24,12 +24,12 @@ body{
 
 /*Ensures that the dropdown-menu appears only when navbar is expanded*/
 @media (min-width: 768px) {
-	.dropdown-menu li a:hover{
+	.navbar .dropdown-menu li a:hover{
 		background-color:#3a4e62;
 		color:white;
 	}
 
-	.dropdown:hover .dropdown-menu {
+	.navbar .dropdown:hover .dropdown-menu {
 	  display: block;
 	}
 }
@@ -112,6 +112,10 @@ nav.navbar{
 	color: white;
 }
 
+.dropdown .dropdown-menu li a:hover{
+	background-color:#3a4e62;
+	color:white;
+}
 
 
 /*
