@@ -128,10 +128,18 @@
                 <ul class="dropdown-menu">
                   <li ng-repeat="item in listItems" ng-click="setMessage(item.property.name, $index)"><a>{{item.property.name}}</a></li>
                 </ul>
+                <p styling="padding:5px;"></p>
               </div>
               <!-- defining form textboxes-->
               <div class="form-group" ng-repeat="option in dropdownOptions">
-                <input type="text" class="form-control" placeholder={{option.unit}}>
+                <div class="row row-content">
+                  <div class="col-xs-9">
+                    <input type="text" class="form-control" placeholder={{option.unit}} ng-model="option.init">
+                  </div>
+                  <div class="col-xs-3">
+                    <span class="label label-info">{{option.dimension}}</span>
+                  </div>
+                </div>
               </div>
             </form>
           </div>

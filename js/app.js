@@ -62,7 +62,7 @@
             {init: 70, slug: "kilogram(s)", unit: "kg", dimension: "mass"},
             {init: 1000, slug: "meter(s)", unit: "m" , dimension: "distance"},
             {init: 9.8, slug: "meter(s) per second squared", unit: "m/s^2", dimension: "acceleration"},
-            {init: 60, slug: "second(s)", unit: "s", dimention: "time"}
+            {init: 60, slug: "second(s)", unit: "s", dimension: "time"}
           ],
         description: "Power is the rate at which work is done / energy is expended. \
                       One watt of power is the amount of work done to move 1 kg of \
