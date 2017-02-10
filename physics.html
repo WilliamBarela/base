@@ -118,48 +118,53 @@
       <!-- ng-repeat="unit in units"-->
       <div class="container" ng-controller='dropdownController'>
         <div class="row row-content">
-          <div class="col-xs-12 col-sm-6 col-sm-offset-4">
+          <div class="col-xs-11 col-xs-offset-1 col-sm-10 col-sm-offset-2 col-md-8 col-md-offset-3">
             <form>
+
               <!-- defining dropdown menu-->
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                  {{message}} <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li ng-repeat="item in listItems" ng-click="setMessage(item.property.name, $index)"><a>{{item.property.name}}</a></li>
-                </ul>
-                <p styling="padding:5px;"></p>
+              <div class="form-group">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                    {{message}} <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li ng-repeat="item in listItems" ng-click="setMessage(item.property.name, $index)"><a>{{item.property.name}}</a></li>
+                  </ul>
+                  <p styling="padding:5px;"></p>
+                </div>
               </div>
+
               <!-- defining form textboxes-->
               <div class="form-group" ng-repeat="option in dropdownOptions">
                 <div class="row row-content">
-                  <div class="col-xs-9">
+                  <div class="col-xs-8">
+                    <label>{{option.dimension}}</label>
                     <input type="text" class="form-control" placeholder={{option.unit}} ng-model="option.init">
                   </div>
-                  <div class="col-xs-3">
-                    <span class="label label-info">{{option.dimension}}</span>
+                  <div class="col-xs-2 padding-20">
+                    <h4><span class="label label-primary">{{option.unit}}</span></h4>
                   </div>
+                  <!--<div class="col-xs-2" style="text-align:center;">
+                    <h4><span class="label label-primary">{{option.dimension}}</span></h4>
+                  </div> -->
                 </div>
               </div>
+
+              <!-- defining calculate button-->
+              <div class="form-group">
+                <div class="row row-content">
+                    <div class="col-xs-4 col-xs-offset-3">
+                      <button class="btn btn-primary" type="button" name="button" ng-click='makeList()'>Calculate!</button> <!--FIXME: make the angular model for this and connect it-->
+                    </div>
+                </div>
+              </div>
+
             </form>
           </div>
         </div>
       </div>
+      <p style="padding:100px;"></p>
 
-      <div class="container" ng-controller='menuServer'>
-        <div class="row row-content">
-          <div class="col-xs-10 col-xs-push-1 col-md-6 col-md-push-6">
-
-            <button type="button" ng-click='makeList()'>Menu Serving</button>
-            <!--
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="//www.youtube.com/embed/ePbKGoIGAXY"></iframe>
-            </div>
-            -->
-          </div>
-        </div>
-        <p style='padding:20px'></p>
-      </div>
 
       <footer class="row-footer" id='my-footer'>
           <div class='container'>
