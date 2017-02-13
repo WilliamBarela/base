@@ -15,23 +15,30 @@
     }
   }
 
-  //Dropdown Controller
+  //Dropdown Controller - provides functions which control the dropdown menu and calculations
   dropdownController.$inject = ['$scope'];
   function dropdownController($scope){
     $scope.listItems =  physics;
     $scope.message = "Please select one";
     $scope.itemIndex;
     $scope.dropdownOptions;
+    $scope.physicalProperty;
     $scope.units = JSON.parse(physics_units);   //remove from final code here and in html
+    $scope.calcOutput = "Please select a property!";
 
     $scope.setMessage = function(itemSelected, index){
       $scope.message = itemSelected;
       $scope.itemIndex = index;
-      $scope.dropdownOptions = $scope.listItems[$scope.itemIndex].variable;
+      $scope.physicalProperty = $scope.listItems[$scope.itemIndex]
+      $scope.dropdownOptions = $scope.physicalProperty.variable;
+    }
+
+    $scope.calculate = function(){
+      $scope.calcOutput = $scope.physicalProperty.formula($scope.dropdownOptions);
     }
 
     $scope.makeList = function(){     //remove from final code here and in final html
-      console.log($scope.units);
+      console.log($scope.dropdownOptions);
     }
   }
 
@@ -53,7 +60,17 @@
           ],
         description: "Energy and work are synonymous. One joule of energy is \
                       the amount of work that needs to be done to move 1 kg of \
-                      mass with one Newton of force over a distance of 1 m."
+                      mass with one Newton of force over a distance of 1 m.",
+        formula: function(dropdownOptions){
+          var energyVars = dropdownOptions;
+
+          var mass = energyVars[0].init;
+          var distance = energyVars[1].init;
+          var acceleration = energyVars[2].init;
+
+          var energy = mass * acceleration * distance;
+          return energy;
+        }
       },
       {
         property: {name: "Power", unit: "W"},
@@ -66,7 +83,18 @@
           ],
         description: "Power is the rate at which work is done / energy is expended. \
                       One watt of power is the amount of work done to move 1 kg of \
-                      mass with one Newton of force over a distance of 1 m per second."
+                      mass with one Newton of force over a distance of 1 m per second.",
+        formula: function(dropdownOptions){
+          var powerVars = dropdownOptions;
+
+          var mass = powerVars[0].init;
+          var distance = powerVars[1].init;
+          var acceleration = powerVars[2].init;
+          var time = powerVars[3].init;
+
+          var power = mass * acceleration * distance * time;
+          return power;
+        }
       },
       {
         property: {name: "Intensity", unit: "W/m^2"},
@@ -79,7 +107,17 @@
         description: "Intensity is a measure of the amount of work done on a unit \
                       of area per unit time. That is, intensity is measured as the \
                       amount of joules of energy which acts on one unit of area (meter squared) \
-                      per unit of time (second)."
+                      per unit of time (second).",
+        formula: function(dropdownOptions){
+          var intensityVars = dropdownOptions;
+
+          var energy = intensityVars[0].init;
+          var time = intensityVars[1].init;
+          var area = intensityVars[2].init;
+
+          var intensity = energy * time * area;
+          return intensity;
+        }
       }
 
                     ];
