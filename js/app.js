@@ -2,53 +2,36 @@
   'use strict';
 
   var app = angular.module('lister', [])
-
-  app.controller('menuServer', menuServer);
   app.controller('dropdownController', dropdownController);
-
-  //Menu Server Function
-  menuServer.$inject = ['$scope'];
-  function menuServer($scope){
-    $scope.myData = JSON.parse(physics_units);
-    $scope.makeList = function(){
-      console.log($scope.myData[0].object.name);
-    }
-  }
 
   //Dropdown Controller - provides functions which control the dropdown menu and calculations
   dropdownController.$inject = ['$scope'];
   function dropdownController($scope){
-    $scope.listItems =  physics;
+    $scope.listItems =  Object.assign({}, physics)// $scope.setDataObject(physics);
+    $scope.itemIndex = undefined;
+    $scope.dropdownOptions = undefined;
+    $scope.physicalProperty = undefined;
     $scope.message = "Please select one";
-    $scope.itemIndex;
-    $scope.dropdownOptions;
-    $scope.physicalProperty;
-    $scope.units = JSON.parse(physics_units);   //remove from final code here and in html
     $scope.calcOutput = "Please select a property!";
+
+    $scope.units = JSON.parse(physics_units);   //remove from final code here and in html
+
+
 
     $scope.setMessage = function(itemSelected, index){
       $scope.message = itemSelected;
       $scope.itemIndex = index;
-      $scope.physicalProperty = $scope.listItems[$scope.itemIndex]
-      $scope.dropdownOptions = $scope.physicalProperty.variable;
+      $scope.physicalProperty = Object.assign({},$scope.listItems[$scope.itemIndex])
+      $scope.dropdownOptions = Object.assign({},$scope.physicalProperty.variable);
+      $scope.calcOutput = "Please input the variables above and click 'Calculate!' below";
     }
 
     $scope.calculate = function(){
       $scope.calcOutput = $scope.physicalProperty.formula($scope.dropdownOptions);
     }
-
-    $scope.makeList = function(){     //remove from final code here and in final html
-      console.log($scope.dropdownOptions);
-    }
   }
 
-  var physics1 = '[ \
-                  {"property": "energy", "object": {"name": "bowling ball", "mass": 7.26, "acceleration":9.8, "init-distance":100}, "units": {"mass": "kg", "distance": "m"}, "colors":{"red": "open your mind to the matrix"}}, \
-                  {"property": "mass", "object": {"name": "bowling ball", "mass": 7.26, "acceleration":9.8, "init-distance":100}, "units": {"mass": "kg", "distance": "m"}, "colors":{"red": "open your mind to the matrix"}}, \
-                  {"property": "force", "object": {"name": "bowling ball", "mass": 7.26, "acceleration":9.8, "init-distance":100}, "units": {"mass": "kg", "distance": "m"}, "colors":{"red": "open your mind to the matrix"}}, \
-                  {"property": "acceleration", "object": {"name": "bowling ball", "mass": 7.26, "acceleration":9.8, "init-distance":100}, "units": {"mass": "kg", "distance": "m"}, "colors":{"red": "open your mind to the matrix"}} \
-                ]';
-
+  // Javascript object which gives data to controller. JSON object would be used instead if it were supported by GitHub.
   var physics = [
       {
         property: {name: "Energy", unit: "J"},
@@ -64,6 +47,7 @@
         formula: function(dropdownOptions){
           var energyVars = dropdownOptions;
 
+          // Although this could be done in a loop, this format is perferred for clarity of the formula.
           var mass = energyVars[0].init;
           var distance = energyVars[1].init;
           var acceleration = energyVars[2].init;
@@ -121,14 +105,4 @@
       }
 
                     ];
-
-
-      var physics_units = '[ \
-                            {"name": "kg"}, \
-                            {"name": "m"}, \
-                            {"name": "m/s^2"} \
-                          ]';
-
-      /*$scope.properties = ["Energy", "Newton's First Law", "Newton's Second Law"];  //remove from final code here and in html */
-
 })();
