@@ -14,10 +14,6 @@
     $scope.message = "Please select one";
     $scope.calcOutput = "Please select a property!";
 
-    $scope.units = JSON.parse(physics_units);   //remove from final code here and in html
-
-
-
     $scope.setMessage = function(itemSelected, index){
       $scope.message = itemSelected;
       $scope.itemIndex = index;
