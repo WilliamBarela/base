@@ -5,22 +5,19 @@
 */
 
 /*essential background image styling*/
-/*
+
 body{
 	background-color: #bdc2c5;
-	background-image: url("../img/ws3-wm-1920-1080-80.jpg");
-	background-repeat:no-repeat;
-	background-attachment:fixed;
-	background-position:left center;
-	background-size:cover;
+	background-image: url("../img/cream_pixels_@2X.png");
+	background-repeat: repeat;
+	font-family: 'Cabin', sans-serif;
+}
+
+/*
+body{
 	font-family: 'Cabin', sans-serif;
 }
 */
-
-body{
-	font-family: 'Cabin', sans-serif;
-}
-
 
 /*Ensures that the dropdown-menu appears only when navbar is expanded*/
 @media (min-width: 768px) {
