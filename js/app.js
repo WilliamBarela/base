@@ -7,14 +7,13 @@
   //Dropdown Controller - provides functions which control the dropdown menu and calculations
   dropdownController.$inject = ['$scope'];
   function dropdownController($scope){
-    $scope.wjLib = {
-      // A function to round numbers to a certain precision
-      round: function(number, precision){
+    // A function to round numbers to a certain precision
+    $scope.wjLib = new Object();
+    $scope.wjLib.round = function(number, precision){
         var p = precision;
         var rounded = (Math.round( Math.round( 10**(2*p+1) * number) / 10**(p+1) ) / 10**p);
         return rounded;
-      }
-    };
+      };
 
     $scope.listItems =  Object.assign({}, physics)// $scope.setDataObject(physics);
     $scope.itemIndex = undefined;
