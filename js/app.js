@@ -20,6 +20,7 @@
     $scope.itemIndex = undefined;
     $scope.dropdownOptions = undefined;
     $scope.physicalProperty = undefined;
+    $scope.calcOutputUnits = undefined;
     $scope.message = "Please select one";
     $scope.calcOutput = "Please select a property!";
     //boolean options for ng-show:
@@ -41,7 +42,8 @@
     }
 
     $scope.calculate = function(){
-      $scope.calcOutput = $scope.physicalProperty.formula($scope.dropdownOptions);
+      $scope.calcOutputUnits = $scope.physicalProperty.property.unit;
+      $scope.calcOutput = $scope.physicalProperty.formula($scope.dropdownOptions, $scope.itemIndex);
       if($scope.calcOutput >= 0.0005){
         $scope.calcOutput = wjLib.round($scope.calcOutput, 3);
       }else if($scope.calcOutput < 0.0005){
@@ -66,16 +68,25 @@
         description: "Energy and work are synonymous. One joule of energy is \
                       the amount of work that needs to be done to move 1 kg of \
                       mass with one Newton of force over a distance of 1 m.",
-        formula: function(dropdownOptions){
-          var energyVars = dropdownOptions;
+        inputVars: function(dropdownOptions){
+          var mass = dropdownOptions[0].init;
+          var distance = dropdownOptions[1].init;
+          var acceleration = dropdownOptions[2].init;
 
-          // Although this could be done in a loop, this format is perferred for clarity of the formula.
-          var mass = energyVars[0].init;
-          var distance = energyVars[1].init;
-          var acceleration = energyVars[2].init;
+          return {
+            mass: mass,
+            distance: distance,
+            acceleration: acceleration
+          }
+        },
+        formula: function(dropdownOptions,itemIndex){
+          var qty = physics[itemIndex].inputVars(dropdownOptions);
 
-          var energy = mass * acceleration * distance;
+          var energy = qty.mass * qty.acceleration * qty.distance;
           return energy;
+        },
+        analysis: function(dropdownOptions, calcOutput){
+
         }
       },
       {
