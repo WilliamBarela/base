@@ -145,7 +145,7 @@
                     {{message}} <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li ng-repeat="item in listItems" ng-click="setMessage(item.property.name, $index)"><a>{{item.property.name}}</a></li>
+                    <li ng-repeat="item in listItems" ng-click="selectProperty(item.property.name, $index)"><a>{{item.property.name}}</a></li>
                   </ul>
                   <p styling="padding:5px;"></p>
                 </div>
@@ -183,6 +183,7 @@
               <div class="form-group">
                 <div class="row row-content">
                     <div class="col-xs-4 col-xs-offset-3">
+                      <!-- <input type="reset" value="Reset"> -->
                       <button class="btn btn-primary" type="button" name="button" ng-click='calculate()'>Calculate!</button> <!--FIXME: make the angular model for this and connect it-->
                     </div>
                 </div>

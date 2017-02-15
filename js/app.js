@@ -29,7 +29,7 @@
     $scope.appBool.afterCalcMessage = false;
     $scope.appBool.tryCalcAgain = false;
 
-    $scope.setMessage = function(itemSelected, index){
+    $scope.selectProperty = function(itemSelected, index){
       $scope.message = itemSelected;
       $scope.itemIndex = index;
       $scope.physicalProperty = Object.assign({},$scope.listItems[$scope.itemIndex])
