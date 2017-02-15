@@ -122,17 +122,17 @@
 
             <h1>Physics Properties Calculator</h1>
 
-            <div ng-show="appBool.initMessage">
+            <div ng-if="appBool.initMessage">
               <p>Select one of the properties from the dropdown below to calculate the property.</p>
               <p>An example will be auto-populated and and explanation will be provided.</p>
             </div>
 
             <!-- FIXME: make this logic simpler if you can-->
-            <div ng-show="appBool.tryCalcAgain"> <!-- && "!appBool.afterCalcMessage"> -->
+            <div ng-if="appBool.tryCalcAgain"> <!-- && "!appBool.afterCalcMessage"> -->
               <p>Please input the variables below and click &quot;Calculate!&quot;.</p>
             </div>
 
-            <div ng-show="appBool.afterCalcMessage">
+            <div ng-if="appBool.afterCalcMessage">
               <p>Try another combination or select another property to calculate.</p>
             </div>
 
@@ -167,7 +167,7 @@
                 </div>
               </div>
 
-              <div class="form-group" ng-show="appBool.afterCalcMessage">
+              <div class="form-group" ng-if="appBool.afterCalcMessage">
                 <div class="row row-content">
                   <div class="col-xs-8">
                       <input type="text" class="form-control" placeholder={{calcOutput}}>
