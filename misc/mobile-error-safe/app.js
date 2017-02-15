@@ -1,33 +1,30 @@
 (function(){
   'use strict';
 
-  var wjLib = {
-    // A function to round numbers to a certain precision
-    round: function(number, precision){
-      var p = precision;
-      var rounded = (Math.round( Math.round( 10**(2*p+1) * number) / 10**(p+1) ) / 10**p);
-      return rounded;
-    }
-  };
-
   var app = angular.module('lister', [])
   app.controller('dropdownController', dropdownController);
 
   //Dropdown Controller - provides functions which control the dropdown menu and calculations
   dropdownController.$inject = ['$scope'];
   function dropdownController($scope){
+    // A small library of functions for rounding, etc.
+    $scope.wjLib = new Object();
+    $scope.wjLib.round = function(number, precision){
+        var p = precision;
+        var rounded = (Math.round( Math.round( Math.pow(10, (2*p+1)) * number) / Math.pow(10, (p+1)) ) / Math.pow(10, p));
+        return rounded;
+      };
+
+
     $scope.listItems =  Object.assign({}, physics)// $scope.setDataObject(physics);
     $scope.itemIndex = undefined;
     $scope.dropdownOptions = undefined;
     $scope.physicalProperty = undefined;
     $scope.message = "Please select one";
     $scope.calcOutput = "Please select a property!";
-    //boolean options for ng-show:
-    $scope.appBool = {};
+    //boolean options for ng-show
+    $scope.appBool = new Object();
     $scope.appBool.initMessage = true;
-    $scope.appBool.calcOutputMessage = false;
-    $scope.appBool.afterCalcMessage = false;
-    $scope.appBool.tryCalcAgain = false;
 
     $scope.setMessage = function(itemSelected, index){
       $scope.message = itemSelected;
@@ -35,21 +32,16 @@
       $scope.physicalProperty = Object.assign({},$scope.listItems[$scope.itemIndex])
       $scope.dropdownOptions = Object.assign({},$scope.physicalProperty.variable);
       $scope.calcOutput = "Please input the variables above and click 'Calculate!' below";
-      $scope.appBool.initMessage = false;    // $scope.appBool.propertiesMessage = false;
-      $scope.appBool.tryCalcAgain = true;
-      $scope.appBool.afterCalcMessage = false;
+      $scope.appBool.initMessage = false;
     }
 
     $scope.calculate = function(){
       $scope.calcOutput = $scope.physicalProperty.formula($scope.dropdownOptions);
       if($scope.calcOutput >= 0.0005){
-        $scope.calcOutput = wjLib.round($scope.calcOutput, 3);
+        $scope.calcOutput = $scope.wjLib.round($scope.calcOutput, 3);
       }else if($scope.calcOutput < 0.0005){
         $scope.calcOutput = "Less than 0.0005";
       }
-      $scope.appBool.afterCalcMessage = true;
-      $scope.appBool.calcOutputMessage = true;
-      $scope.appBool.tryCalcAgain = false;
     }
   }
 

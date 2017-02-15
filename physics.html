@@ -127,6 +127,15 @@
               <p>An example will be auto-populated and and explanation will be provided.</p>
             </div>
 
+            <!-- FIXME: make this logic simpler if you can-->
+            <div ng-show="appBool.tryCalcAgain"> <!-- && "!appBool.afterCalcMessage"> -->
+              <p>Please input the variables below and click &quot;Calculate!&quot;.</p>
+            </div>
+
+            <div ng-show="appBool.afterCalcMessage">
+              <p>Try another combination or select another property to calculate.</p>
+            </div>
+
             <form>
 
               <!-- defining dropdown menu-->
@@ -158,7 +167,7 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" ng-show="appBool.afterCalcMessage">
                 <div class="row row-content">
                   <div class="col-xs-8">
                       <input type="text" class="form-control" placeholder={{calcOutput}}>
