@@ -23,12 +23,14 @@
     $scope.calcOutputUnits = undefined;
     $scope.message = "Please select one";
     $scope.calcOutput = "Please select a property!";
+    $scope.analysisMessage = "";
+
     //boolean options for ng-show:
     $scope.appBool = {};
     $scope.appBool.initMessage = true;
-    $scope.appBool.calcOutputMessage = false;
     $scope.appBool.afterCalcMessage = false;
     $scope.appBool.tryCalcAgain = false;
+    $scope.appBool.errorMessage = false;
 
     $scope.selectProperty = function(itemSelected, index){
       $scope.message = itemSelected;
@@ -42,17 +44,32 @@
     }
 
     $scope.calculate = function(){
+      $scope.appBool.errorMessage = false;
       $scope.calcOutputUnits = $scope.physicalProperty.property.unit;
       $scope.calcOutput = $scope.physicalProperty.formula($scope.dropdownOptions, $scope.itemIndex);
-      if($scope.calcOutput >= 0.0005){
+      if($scope.calcOutput == Infinity){
+        $scope.appBool.errorMessage = true;
+        $scope.calcOutput = "Hold on there!! You know the rules, right? Nature doesn't cut nicely with 0's Please avoid dividing with them or multiplying by Infinity :)";
+      }else if($scope.calcOutput >= 0.0005){
         $scope.calcOutput = wjLib.round($scope.calcOutput, 3);
-      }else if($scope.calcOutput < 0.0005){
-        $scope.calcOutput = "Less than 0.0005";
+      }else if($scope.calcOutput > 0 && $scope.calcOutput < 0.0005){
+        $scope.calcOutput = "less than 0.0005";
+      }else if($scope.calcOutput === 0){
+        $scope.calcOutput = 0;
+      }else{
+        $scope.appBool.errorMessage = true;
+        $scope.calcOutput = "Whoa, wait a minute...something is fishy here. Did you try to make time flow backwards or make a negative mass??? \
+                            Please try again, but this time without breaking the laws of physics :) ...Also, please only use numbers (e.g., 25, 1.3, etc.)";
       }
       $scope.appBool.afterCalcMessage = true;
-      $scope.appBool.calcOutputMessage = true;
       $scope.appBool.tryCalcAgain = false;
+      $scope.analysisMessage = $scope.physicalProperty.analysis($scope.dropdownOptions, $scope.itemIndex, $scope.calcOutput);
     }
+    /*
+    $scope.setAnalysisMessage = function(){
+      (dropdownOptions, itemIndex, calcOutput)
+    }
+    */
   }
 
   // Javascript object which gives data to controller. JSON object would be used instead if it were supported by GitHub.
@@ -85,8 +102,11 @@
           var energy = qty.mass * qty.acceleration * qty.distance;
           return energy;
         },
-        analysis: function(dropdownOptions, calcOutput){
-
+        analysis: function(dropdownOptions, itemIndex, calcOutput){
+          var qty = physics[itemIndex].inputVars(dropdownOptions);
+          // Can be improved by expanding inputVars to return units as well so that it is more general
+          var message = "It requires " + calcOutput + " J of energy for an object of " + qty.mass + " kg of mass to be accelerated at " + qty.acceleration + " m/s^2 over a distance of " + qty.distance + " m.";
+          return message;
         }
       },
       {
@@ -101,16 +121,32 @@
         description: "Power is the rate at which work is done / energy is expended. \
                       One watt of power is the amount of work done to move 1 kg of \
                       mass with one Newton of force over a distance of 1 m per second.",
-        formula: function(dropdownOptions){
-          var powerVars = dropdownOptions;
+        inputVars: function(dropdownOptions){
+          var mass = dropdownOptions[0].init;
+          var distance = dropdownOptions[1].init;
+          var acceleration = dropdownOptions[2].init;
+          var time = dropdownOptions[3].init;
 
-          var mass = powerVars[0].init;
-          var distance = powerVars[1].init;
-          var acceleration = powerVars[2].init;
-          var time = powerVars[3].init;
+          return {
+            mass: mass,
+            distance: distance,
+            acceleration: acceleration,
+            time: time
+          }
+        },
+        formula: function(dropdownOptions,itemIndex){
+          var qty = physics[itemIndex].inputVars(dropdownOptions);
 
-          var power = mass * acceleration * distance * time;
+          var power = (qty.mass * qty.acceleration * qty.distance) / qty.time;
           return power;
+        },
+        analysis: function(dropdownOptions, itemIndex, calcOutput){
+          var qty = physics[itemIndex].inputVars(dropdownOptions);
+          // Can be improved by expanding inputVars to return units as well so that it is more general
+          var message = calcOutput + " W of power must be supplied for an object of " +
+                        qty.mass + " kg of mass to be accelerated at " + qty.acceleration + " m/s^2 over a distance of " +
+                        qty.distance + " m in the course of " + qty.time + " s.";
+          return message;
         }
       },
       {
@@ -134,6 +170,32 @@
 
           var intensity = energy * time * area;
           return intensity;
+        },
+        inputVars: function(dropdownOptions){
+          var energy = dropdownOptions[0].init;
+          var time = dropdownOptions[1].init;
+          var area = dropdownOptions[2].init;
+
+          return {
+            energy: energy,
+            time: time,
+            area: area
+          }
+        },
+        formula: function(dropdownOptions,itemIndex){
+          var qty = physics[itemIndex].inputVars(dropdownOptions);
+
+          var intensity = qty.energy / (qty.time * qty.area);
+          return intensity;
+        },
+        analysis: function(dropdownOptions, itemIndex, calcOutput){
+          var qty = physics[itemIndex].inputVars(dropdownOptions);
+          // Can be improved by expanding inputVars to return units as well so that it is more general
+          var message = "When " + qty.energy + " J of energy is applied to an area of " +
+                        qty.area + " m in the span of " + qty.time + " s, the amount of work \
+                        that would be done on one meter of the surface per second would be " +
+                        calcOutput + " J*m^-2*s^-1.";
+          return message;
         }
       }
 
