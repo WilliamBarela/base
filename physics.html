@@ -26,7 +26,7 @@
     <!-- Importing Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Cabin|Ek+Mukta|Open+Sans|Special+Elite" rel="stylesheet">
     <!-- Importing Angular.js-->
-    <script src='js/angular/angular.js'></script>
+    <script src='js/angular/angular.min.js'></script>
     <script src='js/app.js'></script>
     <title>William Barela: Physics</title>
   </head>
@@ -122,17 +122,17 @@
 
             <h1>Physics Properties Calculator</h1>
 
-            <div> <!-- FIXME ng-show="appBool.initMessage"> -->
+            <div ng-show="appBool.initMessage">
               <p>Select one of the properties from the dropdown below to calculate the property.</p>
               <p>An example will be auto-populated and and explanation will be provided.</p>
             </div>
 
             <!-- FIXME: make this logic simpler if you can-->
-            <div> <!-- FIXME ng-show="appBool.tryCalcAgain"> --> <!-- && "!appBool.afterCalcMessage"> -->
+            <div ng-show="appBool.tryCalcAgain"> <!-- && "!appBool.afterCalcMessage"> -->
               <p>Please input the variables below and click &quot;Calculate!&quot;.</p>
             </div>
 
-            <div> <!-- FIXME ng-show="appBool.afterCalcMessage"> -->
+            <div ng-show="appBool.afterCalcMessage">
               <p>Try another combination or select another property to calculate.</p>
             </div>
 
@@ -167,7 +167,7 @@
                 </div>
               </div>
 
-              <div class="form-group"> <!-- FIXME  ng-show="appBool.afterCalcMessage"> -->
+              <div class="form-group" ng-show="appBool.afterCalcMessage">
                 <div class="row row-content">
                   <div class="col-xs-8">
                       <input type="text" class="form-control" placeholder={{calcOutput}}>
