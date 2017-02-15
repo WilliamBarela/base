@@ -38,7 +38,7 @@
       $scope.physicalProperty = Object.assign({},$scope.listItems[$scope.itemIndex])
       $scope.dropdownOptions = Object.assign({},$scope.physicalProperty.variable);
       $scope.calcOutput = "Please input the variables above and click 'Calculate!' below";
-      $scope.appBool.initMessage = false;    // $scope.appBool.propertiesMessage = false;
+      $scope.appBool.initMessage = false; 
       $scope.appBool.tryCalcAgain = true;
       $scope.appBool.afterCalcMessage = false;
     }
@@ -47,6 +47,7 @@
       $scope.appBool.errorMessage = false;
       $scope.calcOutputUnits = $scope.physicalProperty.property.unit;
       $scope.calcOutput = $scope.physicalProperty.formula($scope.dropdownOptions, $scope.itemIndex);
+      // FIXME: Better error handling should be applied to the date before it gets here so that this set of loops is not necessary.
       if($scope.calcOutput == Infinity){
         $scope.appBool.errorMessage = true;
         $scope.calcOutput = "Hold on there!! You know the rules, right? Nature doesn't cut nicely with 0's Please avoid dividing with them or multiplying by Infinity :)";
