@@ -8,14 +8,14 @@
   dropdownController.$inject = ['$scope'];
   function dropdownController($scope){
     // A function to round numbers to a certain precision
-    /*
+
     $scope.wjLib = new Object();
     $scope.wjLib.round = function(number, precision){
         var p = precision;
-        var rounded = (Math.round( Math.round( 10**(2*p+1) * number) / 10**(p+1) ) / 10**p);
+        var rounded = (Math.round( Math.round( Math.pow(10, (2*p+1)) * number) / Math.pow(10, (p+1)) ) / Math.pow(10, p));
         return rounded;
       };
-    */
+
 
     $scope.listItems =  Object.assign({}, physics)// $scope.setDataObject(physics);
     $scope.itemIndex = undefined;
@@ -39,7 +39,7 @@
     $scope.calculate = function(){
       $scope.calcOutput = $scope.physicalProperty.formula($scope.dropdownOptions);
       if($scope.calcOutput >= 0.0005){
-        $scope.calcOutput = Math.round($scope.calcOutput);
+        $scope.calcOutput = $scope.wjLib.round($scope.calcOutput, 3);
       }else if($scope.calcOutput < 0.0005){
         $scope.calcOutput = "Less than 0.0005";
       }
