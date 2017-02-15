@@ -13,6 +13,8 @@
     $scope.physicalProperty = undefined;
     $scope.message = "Please select one";
     $scope.calcOutput = "Please select a property!";
+    $scope.appBool = new Object();
+    $scope.appBool.initMessage = true;
 
     $scope.setMessage = function(itemSelected, index){
       $scope.message = itemSelected;
@@ -20,6 +22,7 @@
       $scope.physicalProperty = Object.assign({},$scope.listItems[$scope.itemIndex])
       $scope.dropdownOptions = Object.assign({},$scope.physicalProperty.variable);
       $scope.calcOutput = "Please input the variables above and click 'Calculate!' below";
+      $scope.appBool.initMessage = false;
     }
 
     $scope.calculate = function(){
