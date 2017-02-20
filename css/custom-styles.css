@@ -122,6 +122,21 @@ nav.navbar{
 	padding-top:20px;
 }
 
+/*FIXME change color and transparence and alignment */
+
+.well{
+	text-align: center;
+	background:rgba(212, 216, 209, 0.5);
+	border: 1px solid rgba(212, 216, 209, 0.5);
+	transition: color 1s ease-in-out;
+	transition: background 0.5s ease-in-out;
+}
+
+.well:hover{
+	color: rgba(0, 0, 0, 0.8);
+	background:rgba(212, 216, 209, 0.9);
+}
+
 /*
 font-family: 'Ek Mukta', sans-serif;
 font-family: 'Open Sans', sans-serif;
