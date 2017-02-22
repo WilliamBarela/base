@@ -38,7 +38,7 @@
       $scope.physicalProperty = Object.assign({},$scope.listItems[$scope.itemIndex])
       $scope.dropdownOptions = Object.assign({},$scope.physicalProperty.variable);
       $scope.calcOutput = "Please input the variables above and click 'Calculate!' below";
-      $scope.appBool.initMessage = false; 
+      $scope.appBool.initMessage = false;
       $scope.appBool.tryCalcAgain = true;
       $scope.appBool.afterCalcMessage = false;
     }
@@ -156,7 +156,7 @@
         variable: [
             {init: 0.005, slug: "joule(s)", unit: "J", dimension: "energy"},
             {init: 1, slug: "second(s)", unit: "s", dimension: "time"},
-            {init: 0.0001, slug: "meter(s)", unit: "m^s" , dimension: "area"}
+            {init: 0.0001, slug: "meter(s)", unit: "m^2" , dimension: "area"}
           ],
         description: "Intensity is a measure of the amount of work done on a unit \
                       of area per unit time. That is, intensity is measured as the \
